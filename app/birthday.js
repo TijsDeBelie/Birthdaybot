@@ -43,10 +43,6 @@ const birthday = {
               usersText = ` ${usersText}(${year - user.year}р.)`;
             }
           });
-          let to = 'Тобі';
-          if (servers[serverId] > 1) {
-            to = 'Вам';
-          }
 
           let images = imagesData.images;
           `Happy Birthday to ${usersText}`
@@ -85,4 +81,4 @@ const birthday = {
 
 };
 
-export default birthday;
+module.exports =  birthday;

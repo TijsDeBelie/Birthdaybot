@@ -1,10 +1,12 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import Discord from 'discord.js';
-import processMessage from './process-message';
-import cron from 'cron';
-import mongoDB from './db'
-import birthday from './birthday';
+
+
+const express = require('express');
+const dotenv = require('dotenv');
+const Discord = require('discord.js');
+const processMessage = require('./prme.js');
+const cron = require('cron');
+const mongoDB = require('./db.js');
+const birthday = require('./birthday.js');
 
 const app = express();
 dotenv.config();

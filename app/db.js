@@ -118,4 +118,4 @@ const mongoDB = {
   }
 };
 
-export default mongoDB;
+module.exports = mongoDB;
