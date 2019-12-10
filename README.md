@@ -1,4 +1,4 @@
-# Birthday bot for Discord
+# node js BirthDay bot for Discord
 
 ## Running Locally
 
