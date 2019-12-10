@@ -1,7 +1,7 @@
-import mongoDB from './db';
-import dotenv from 'dotenv';
-import adPhrasesData from './assets/ad-phrases.json';
-import imagesData from './assets/images.json';
+const mongoDB = require( './db.js')
+const dotenv = require( 'dotenv')
+const adPhrasesData = require( './assets/ad-phrases.json')
+const imagesData = require( './assets/images.json')
 
 dotenv.config();
 

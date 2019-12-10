@@ -1,4 +1,4 @@
-import mongoDB from './db';
+const mongoDB = require ('./db.js');
 
 const processMessage = {
   formatNumbers: (numbers) => {
