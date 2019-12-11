@@ -15,16 +15,16 @@ const client = new Discord.Client();
 const CronJob = cron.CronJob;
 
 const bdReminder = new cron.CronJob({
-  cronTime: '00 00 10 * * *',
+  cronTime: '0 1 * * *',
   onTick: birthday.cronTick,
-  start: false,
+  start: true,
   timeZone: 'Europe/Kiev'
 });
 
 const adReminder = new cron.CronJob({
   cronTime: '00 00 10 * * Mon',
   onTick: birthday.showAd,
-  start: false,
+  start: true,
   timeZone: 'Europe/Kiev'
 });
 

@@ -40,7 +40,7 @@ const birthday = {
             }
             usersText = `${usersText}<@${user.user_id}>`;
             if (user.year) {
-              usersText = ` ${usersText}(${year - user.year}р.)`;
+              usersText = ` ${usersText}(${year - user.year} Year)`;
             }
           });
 
@@ -50,10 +50,14 @@ const birthday = {
 
           let guild = birthday._client.guilds.get(serverId);
           if (guild) {
+            console.log(guild.name)
             let channels = guild.channels;
             let generalName = process.env.CHANNEL_GENERAL || 'general';
-            let generalKey = channels.findKey('name', generalName) || channels.firstKey();
-            channels.get(generalKey).send(greeting);
+            let general = channels.find((val => val.name === generalName && val.type == "text")) || channels.first() || channels.random();
+            console.log(general)
+            if(general.type == "text"){
+              general.send(greeting);
+            }
           }
         });
       });
@@ -68,8 +72,8 @@ const birthday = {
           if (guild) {
             let channels = guild.channels;
             let botCommandName = process.env.CHANNEL_BOT_COMMANDS || 'bot_commands';
-            let botCommandsKey = channels.findKey('name', botCommandName);
-            let botCommandsChannel = channels.get(botCommandsKey);
+            let botCommandsChannel = channels.find(val => val.name === botCommandName);
+            
             if (botCommandsChannel) {
               botCommandsChannel.send(adPhrasesData.adPhrases[random(adPhrasesData.adPhrases.length)]);
             }
