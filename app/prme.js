@@ -71,10 +71,13 @@ const processMessage = {
 
   addBirthday: (message, mess) => {
     let userData = {
-      user_id: message.author.id,
-      username: message.author.username,
+      user_id: message.mentions.members.first().id || message.author.id,
+      username: message.mentions.members.first().user.username || message.author.username,
       server_ids: [message.channel.guild.id]
     };
+
+    mess = (mess.replace(/ \<[\s\S]*?\>/g, ''));
+    console.log(mess)
 
     let numbers = mess.match(/\d+/g);
     numbers = processMessage.formatNumbers(numbers);
@@ -87,7 +90,7 @@ const processMessage = {
       userData.year = numbers[2];
       processMessage.updateServers(message.channel.guild.id, message.channel.guild.name);
       processMessage.updateUserData(userData).then(() => {
-        message.reply(`I succesfully saved your birthday: ${numbers[0]}.${numbers[1]}${numbers[2] ? '.' + numbers[2] : ''} if it's not correct you can re-enter it in the format dd.mmm or dd.mmm.yyyy by executing the same command`);
+        message.channel.send(`I succesfully saved <@${userData.user_id}>'s birthday: ${numbers[0]}.${numbers[1]}${numbers[2] ? '.' + numbers[2] : ''} if it's not correct you can re-enter it in the format dd.mmm or dd.mmm.yyyy by executing the same command`);
       });
     }
   },
