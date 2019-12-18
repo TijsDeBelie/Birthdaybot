@@ -70,9 +70,10 @@ const processMessage = {
   },
 
   addBirthday: (message, mess) => {
+    let user = message.mentions.members.first() || message.author;
     let userData = {
-      user_id: message.mentions.members.first().id || message.author.id,
-      username: message.mentions.members.first().user.username || message.author.username,
+      user_id: user.id,
+      username: user.displayName || user.username,
       server_ids: [message.channel.guild.id]
     };
 

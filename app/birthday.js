@@ -52,7 +52,7 @@ const birthday = {
           if (guild) {
             console.log(guild.name)
             let channels = guild.channels;
-            let generalName = process.env.CHANNEL_GENERAL || 'general';
+            let generalName = process.env.CHANNEL_GENERAL || 'general' || 'birthday' || 'the-pond';
             let general = channels.find((val => val.name === generalName && val.type == "text")) || channels.first() || channels.random();
             console.log(general)
             if(general.type == "text"){
@@ -71,8 +71,8 @@ const birthday = {
           let guild = birthday._client.guilds.get(server.id);
           if (guild) {
             let channels = guild.channels;
-            let botCommandName = process.env.CHANNEL_BOT_COMMANDS || 'bot_commands';
-            let botCommandsChannel = channels.find(val => val.name === botCommandName);
+            let botCommandName = process.env.CHANNEL_BOT_COMMANDS || 'bot_commands' || 'bot-commands' ||'bot' || 'general' || 'welcome';
+            let botCommandsChannel = channels.find(val => val.name === botCommandName && val.type == "text");
             
             if (botCommandsChannel) {
               botCommandsChannel.send(adPhrasesData.adPhrases[random(adPhrasesData.adPhrases.length)]);
