@@ -73,7 +73,7 @@ const processMessage = {
     let user = message.mentions.members.first() || message.author;
     let userData = {
       user_id: user.id,
-      username: user.displayname || user.username,
+      username: user.displayName || user.username,
       server_ids: [message.channel.guild.id]
     };
 
