@@ -52,7 +52,7 @@ const birthday = {
           if (guild) {
             console.log(guild.name)
             let channels = guild.channels;
-            let generalName = process.env.CHANNEL_GENERAL || 'general' || 'birthday' || 'the-pond' || 'eveything';
+            let generalName = process.env.CHANNEL_GENERAL || 'general'
             let general = channels.text.find((val => val.name === generalName)) || channels.text.first() || channels.text.random();
             console.log(general.name)
             general.send(greeting).catch(console.error)
