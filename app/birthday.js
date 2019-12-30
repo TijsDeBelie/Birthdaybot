@@ -1,7 +1,7 @@
-const mongoDB = require( './db.js')
-const dotenv = require( 'dotenv')
-const adPhrasesData = require( './assets/ad-phrases.json')
-const imagesData = require( './assets/images.json')
+const mongoDB = require('./db.js')
+const dotenv = require('dotenv')
+const adPhrasesData = require('./assets/ad-phrases.json')
+const imagesData = require('./assets/images.json')
 
 dotenv.config();
 
@@ -52,12 +52,11 @@ const birthday = {
           if (guild) {
             console.log(guild.name)
             let channels = guild.channels;
-            let generalName = process.env.CHANNEL_GENERAL || 'general' || 'birthday' || 'the-pond';
-            let general = channels.find((val => val.name === generalName && val.type == "text")) || channels.first() || channels.random();
-            console.log(general)
-            if(general.type == "text"){
-              general.send(greeting);
-            }
+            let generalName = process.env.CHANNEL_GENERAL || 'general' || 'birthday' || 'the-pond' || 'eveything';
+            let general = channels.text.find((val => val.name === generalName)) || channels.text.first() || channels.text.random();
+            console.log(general.name)
+            general.send(greeting).catch(console.error)
+            console.log(greeting)
           }
         });
       });
@@ -71,18 +70,19 @@ const birthday = {
           let guild = birthday._client.guilds.get(server.id);
           if (guild) {
             let channels = guild.channels;
-            let botCommandName = process.env.CHANNEL_BOT_COMMANDS || 'bot_commands' || 'bot-commands' ||'bot' || 'general' || 'welcome';
-            let botCommandsChannel = channels.find(val => val.name === botCommandName && val.type == "text");
-            
+            let botCommandName = process.env.CHANNEL_BOT_COMMANDS || 'bot_commands' || 'bot-commands' || 'bot' || 'general' || 'welcome';
+            let botCommandsChannel = channels.text.find(val => val.name === botCommandName);
+
             if (botCommandsChannel) {
               botCommandsChannel.send(adPhrasesData.adPhrases[random(adPhrasesData.adPhrases.length)]);
             }
           }
         });
+
       });
     });
   }
 
 };
 
-module.exports =  birthday;
+module.exports = birthday;

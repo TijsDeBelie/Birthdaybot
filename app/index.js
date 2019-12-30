@@ -29,6 +29,7 @@ const adReminder = new cron.CronJob({
 });
 
 client.on('ready', () => {
+  
   console.log('I am ready!', new Date());
   birthday._client = client;
   bdReminder.start();
@@ -50,3 +51,4 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running at localhost:' + app.get('port'))
 });
+

@@ -31,7 +31,7 @@ const mongoDB = {
           mongoDB._db.close();
           rej(err);
         } else {
-          console.log('find user:', result);
+          //console.log('find user:', result);
           res(result);
         }
       });
@@ -48,7 +48,7 @@ const mongoDB = {
             mongoDB._db.close();
             rej(err);
           } else {
-            console.log('User information was added', result.results);
+            //console.log('User information was added', result.results);
             res(result);
           }
         });
@@ -76,7 +76,7 @@ const mongoDB = {
           mongoDB._db.close();
           rej(err);
         } else {
-          console.log('find users by Birthday:', result);
+          //console.log('find users by Birthday:', result);
           res(result);
         }
       });
