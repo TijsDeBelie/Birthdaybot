@@ -14,7 +14,7 @@
     "discord.js": "^11.1.0",
     "dotenv": "^4.0.0",
     "express": "^4.13.3",
-    "mongodb": "^2.2.30"
+    "mongodb": "^3.1.13"
   },
   "engines": {
     "node": "8.0.0"
